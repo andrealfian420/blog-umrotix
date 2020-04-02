@@ -1,0 +1,401 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    font-family: 'Nunito', sans-serif;
+}
+
+// Navbar
+.navbar-brand img {
+    max-height: 70px;
+}
+
+.navbar {
+    .nav-link {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 20px;
+        color: #040404;
+    }
+
+    .logoMini {
+        max-height: 50px;
+    }
+}
+
+// Mobile - Navbar
+@media(min-width: 992px) {
+    .navbar {
+        .nav-link {
+            &:hover::after {
+                content: '';
+                display: block;
+                border-bottom: 3px solid #040404;
+                width: 50%;
+                margin: auto;
+                padding-bottom: 5px;
+                margin-bottom: -8px;
+            }
+        }
+    }
+}
+
+// Content
+.content-blog {
+    .upper-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .upper-img {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 60vh;
+        }
+
+        .upper-title {
+            font-family: 'Josefin Sans', sans-serif;
+            margin-top: -45px;
+            margin-left: 5px;
+
+            a {
+                color: #fff;
+            }
+        }
+    }
+
+    .middle-content {
+        height: 450px;
+        border: 1px solid #ccc;
+        display: flex;
+        flex-direction: column;
+
+        .middle-img {
+            margin: auto;
+            width: 90%;
+            height: 40%;
+        }
+
+        .middle-title {
+            font-family: 'Josefin Sans', sans-serif;
+            margin: auto;
+            text-align: center;
+
+            a {
+                color: #040404;
+            }
+        }
+
+        .middle-title,
+        .middle-subtitle,
+        .middle-news {
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        .middle-news {
+            text-align: left;
+        }
+    }
+
+
+    // Mobile - Middle Content
+    @media(max-width: 768px) {
+        .middle-content {
+            height: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: 1px solid #ccc;
+
+            .middle-img {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 50vh;
+            }
+
+            .middle-title {
+                font-family: 'Josefin Sans', sans-serif;
+                margin: auto;
+                text-align: center;
+
+                a {
+                    color: #040404;
+                }
+            }
+        }
+    }
+
+    .search-bar {
+        display: flex;
+        flex-direction: column;
+
+        .search-input {
+            width: 100%;
+            border-radius: 0;
+        }
+
+        .btn-search {
+            position: absolute;
+            margin-left: 5px;
+            height: 40px;
+            left: auto;
+            right: 5px;
+            top: 0;
+        }
+    }
+
+    .right-content-header {
+        height: 50px;
+
+        .right-content-header-title {
+            text-align: center;
+            margin-top: 10px;
+        }
+    }
+
+    .right-content {
+        border: 1px solid #ccc;
+        display: flex;
+
+        .right-img {
+            width: 50%;
+            height: 100%;
+        }
+
+        .right-title {
+            margin: auto;
+            text-align: center;
+            font-family: 'Josefin Sans', sans-serif;
+
+            a {
+                color: #040404;
+            }
+        }
+    }
+
+    .lower-container {
+        // position: relative;
+
+        .lower-content {
+            // position: relative;
+            // z-index: 1;
+
+            .lower-img {
+                height: 250px;
+                width: 100%;
+                // position: relative;
+            }
+
+            // .lower-img::after {
+            //     content: '';
+            //     display: block;
+            //     width: 100%;
+            //     height: 250px;
+            //     position: absolute;
+            //     bottom: 0;
+            //     background: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+            // }
+
+            .lower-title {
+                // position: relative;
+                margin-top: -45px;
+                margin-left: 5px;
+                font-family: 'Josefin Sans', sans-serif;
+
+                a {
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+}
+
+// Footer
+
+.section-footer {
+    background-color: #413F35;
+    color: #ffffff;
+
+    .img-footer {
+        margin-left: -100px;
+        margin-top: -30px;
+        max-width: 400px;
+        max-height: 250px;
+    }
+
+    .about {
+        margin-top: 20px;
+        left: 200px;
+    }
+
+    .sosmed {
+        margin-top: 10px;
+    }
+
+    .sosmed img {
+        height: auto;
+        width: auto;
+    }
+
+    .footer-title {
+        font-family: 'Josefin Sans', sans-serif;
+        color: #ccc;
+        padding: 10px 0px 0px 0px;
+        margin: 0;
+    }
+}
+
+// 404 NOT FOUND PAGE
+.nofound-container {
+    margin-top: 10px;
+
+    .clouds {
+        .clouds-img {
+            width: 100%;
+            height: 25vh;
+        }
+    }
+
+    .message {
+        .message-img {
+            width: 50vw;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .message {
+            .message-img {
+                width: 80vw;
+            }
+        }
+    }
+
+    .character {
+        .character-img {
+            margin-left: -75px;
+            margin-top: -90px;
+            width: 45vw;
+            height: 50vh;
+            z-index: 2;
+        }
+    }
+
+    .return-link {
+        display: flex;
+
+        .return-message {
+            margin-left: 150px;
+            font-weight: bold;
+
+            a {
+                color: #040404;
+            }
+        }
+
+        .right-cable {
+            align-items: flex-end;
+            width: 250px;
+            height: 80px;
+            margin-top: -25px;
+            margin-left: -30px;
+        }
+    }
+
+    @media(max-width: 768px) {
+        .return-link {
+            display: block;
+
+            .return-message {
+                margin: auto;
+                text-align: center;
+            }
+        }
+    }
+}
+
+// End of 404 NOT FOUND PAGE
+
+// LOGIN PAGE
+.top-img-container {
+    .left-logo {
+        .left-logo-img {
+            width: 50%;
+            height: 70px;
+        }
+    }
+
+    .right-icon {
+        .right-icon-img {
+            width: 120px;
+            height: 50px;
+        }
+    }
+}
+
+.login-container {
+    margin-top: 35px;
+
+    .login-title {
+        h2 {
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: bold;
+        }
+    }
+
+    .login-form {
+        input {
+            width: 250px;
+            height: 40px;
+            border-radius: 37px;
+            background: #14b6fe;
+            border: 1px solid #707070;
+            color: #fff;
+
+            &::placeholder {
+                color: #fff;
+            }
+
+        }
+
+        .btnLogin {
+            width: 100px;
+            height: 40px;
+            border-radius: 37px;
+            background: #14b6fe;
+            border: 1px solid #707070;
+            color: #fff;
+
+            &:hover {
+                background: #74D4FF;
+            }
+        }
+    }
+}
+
+.lower-img-container {
+    .left-item {
+        .left-image {
+            margin-top: -160px;
+            margin-left: 100px;
+            width: 320px;
+            height: 350px;
+        }
+    }
+
+    .right-item {
+        .right-image {
+            margin-top: -155px;
+            margin-left: 150px;
+            width: 320px;
+            height: 300px;
+        }
+    }
+}
+
+// End of LOGIN PAGE
