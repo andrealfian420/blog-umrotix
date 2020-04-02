@@ -16,8 +16,39 @@
                 <div class="login-title">
                     <h2>Login</h2>
                 </div>
+
+                <!-- Failed login alert -->
+                <?php if ($this->session->flashdata('loginFailed')) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">
+                        We're sorry! the email is <strong>not registered</strong> in our server!
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Wrong password alert -->
+                <?php if ($this->session->flashdata('wrongPassword')) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">
+                        The password is <strong>invalid!</strong>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Validation errors -->
+                <?php if (validation_errors()) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">
+                        <?= validation_errors(); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
                 <div class="login-form mt-4">
-                    <form action="" method="post">
+                    <form action="<?= base_url('auth'); ?>" method="post">
                         <input type="email" name="email" placeholder="Email" class="text-center">
                         <br>
                         <input type="password" name="password" placeholder="Password" class="text-center mt-3">
