@@ -19,7 +19,7 @@ class Post_temp_Model extends CI_Model
 
         $data = [
             'nama_artikel' => $this->input->post('nama_artikel'),
-            'slug' => url_title($this->input->post('nama_artikel')),
+            'slug' => strtolower(url_title($this->input->post('nama_artikel'))),
             'artikel_short' => $this->input->post('artikel_short'),
             'artikel_text' => $this->input->post('artikel_text'),
             'image' => $this->_uploadImage(),
@@ -29,6 +29,36 @@ class Post_temp_Model extends CI_Model
         ];
 
         $this->db->insert('post_temp', $data);
+    }
+
+    public function getNewestArticle()
+    {
+        return $this->db->order_by('id', 'DESC')->limit(1)->get('post_temp')->row_array();
+    }
+
+    public function getMiddleArticle()
+    {
+        return $this->db->order_by('id', 'DESC')->limit(3)->get('post_temp')->result_array();
+    }
+
+    public function getOldArticle()
+    {
+        return $this->db->limit(5)->get('post_temp')->result_array();
+    }
+
+    public function getLowerArticle()
+    {
+        return $this->db->order_by('id', 'ASC')->limit(2)->get('post_temp')->result_array();
+    }
+
+    public function getPopularArticle()
+    {
+        return $this->db->order_by('id', 'DESC')->limit(6)->get('post_temp')->result_array();
+    }
+
+    public function getArticleBySlug($slug)
+    {
+        return $this->db->get_where('post_temp', ['slug' => $slug])->row_array();
     }
 
     private function _uploadImage()

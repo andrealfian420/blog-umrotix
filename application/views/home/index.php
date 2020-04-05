@@ -38,39 +38,31 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="upper-content">
-                            <img src="<?= base_url('assets/img/1.png'); ?>" alt="Dummy" class="upper-img">
-                            <h3 class="upper-title"><a href="#">Seorang anak tersesat dirumahnya</a></h3>
+                            <img src="<?= base_url('assets/content-img/' . $artikel_baru['image']) ?>" alt="<?= $artikel_baru['image']; ?>" class="upper-img">
+                            <h3 class="upper-title">
+                                <a href="#" class="badge badge-secondary kategori d-none d-lg-inline mr-1">
+                                    <?php $kategori = $this->db->get_where('kategori_temp', ['id' => $artikel_baru['kategori_id']])->row_array();
+                                    echo $kategori['kategori']; ?>
+                                </a>
+                                <a href="<?php echo base_url('artikel/' . $artikel_baru['slug']); ?>"><?= $artikel_baru['nama_artikel']; ?></a>
+                            </h3>
                         </div>
                     </div>
                 </div>
                 <div class="row mt-4">
-                    <div class="col-md-4 mt-3 ">
-                        <div class="middle-content">
-                            <img src="<?= base_url('assets/img/2.png'); ?>" alt="Dummy" class="middle-img mt-0 mt-md-2">
-                            <h5 class="middle-title mt-2 mt-md-0"><a href="#">Seorang bapak memiliki istri</a></h5>
-                            <small class="text-muted middle-subtitle">29 Februari 2020</small>
-                            <p class="middle-news">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut,
-                                accusantium delectus suscipit nulla est minima ullam numquam optio sit impedit?</p>
+                    <?php foreach ($artikel_tengah as $mid) : ?>
+                        <div class="col-md-4 mt-2">
+                            <div class="middle-content">
+                                <img src="<?php echo base_url('assets/content-img/' . $mid['image']); ?>" alt="<?php echo $mid['image']; ?>" class="middle-img mt-0 mt-md-2">
+                                <h5 class="middle-title mt-2 mt-md-0 text-center"><a href="<?php echo base_url('artikel/' . $mid['slug']) ?>"><?php echo $mid['nama_artikel']; ?></a></h5>
+                                <small class="text-muted middle-subtitle">
+                                    <?php $date = date('d F Y', strtotime($mid['created_at']));
+                                    echo $date; ?>
+                                </small>
+                                <p class="middle-news"><?php echo $mid['artikel_short'] ?></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 mt-3 ">
-                        <div class="middle-content">
-                            <img src="<?= base_url('assets/img/7.jpg'); ?>" alt="Dummy" class="middle-img mt-0 mt-md-2">
-                            <h5 class="middle-title mt-2 mt-md-0"><a href="#">Seorang bapak membetulkan rumah</a></h5>
-                            <small class="text-muted middle-subtitle">29 Februari 2020</small>
-                            <p class="middle-news">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur
-                                amet voluptatem unde voluptates ea modi error pariatur nulla magni alias?</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mt-3">
-                        <div class="middle-content">
-                            <img src="<?= base_url('assets/img/4.png'); ?>" alt="Dummy" class="middle-img mt-0 mt-md-2">
-                            <h5 class="middle-title mt-2 mt-md-0"><a href="#">Seorang bapak memiliki anak</a></h5>
-                            <small class="text-muted middle-subtitle">29 Februari 2020</small>
-                            <p class="middle-news">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis
-                                obcaecati quisquam labore quidem magnam, deserunt numquam at quas dignissimos fugit!</p>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <!-- End of Left Content -->
@@ -91,26 +83,12 @@
                         <div class="right-content-header border mt-2 mt-md-0">
                             <h4 class="right-content-header-title">Other Posts</h4>
                         </div>
-                        <div class="right-content mt-4">
-                            <img src="<?= base_url('assets/img/8.jpg'); ?>" alt="Dummy" class="right-img">
-                            <h6 class="right-title"><a href="#">Seorang pria menikahi tiang</a></h6>
-                        </div>
-                        <div class="right-content mt-4">
-                            <img src="<?= base_url('assets/img/8.jpg'); ?>" alt="Dummy" class="right-img">
-                            <h6 class="right-title"><a href="#">Seorang pria menikahi tiang</a></h6>
-                        </div>
-                        <div class="right-content mt-4">
-                            <img src="<?= base_url('assets/img/8.jpg'); ?>" alt="Dummy" class="right-img">
-                            <h6 class="right-title"><a href="#">Seorang pria menikahi tiang</a></h6>
-                        </div>
-                        <div class="right-content mt-4">
-                            <img src="<?= base_url('assets/img/8.jpg'); ?>" alt="Dummy" class="right-img">
-                            <h6 class="right-title"><a href="#">Seorang pria menikahi tiang</a></h6>
-                        </div>
-                        <div class="right-content mt-4">
-                            <img src="<?= base_url('assets/img/8.jpg'); ?>" alt="Dummy" class="right-img">
-                            <h6 class="right-title"><a href="#">Seorang pria menikahi tiang</a></h6>
-                        </div>
+                        <?php foreach ($artikel_lama as $old) : ?>
+                            <div class="right-content mt-4">
+                                <img src="<?= base_url('assets/content-img/' . $old['image']); ?>" alt="<?= $old['image']; ?>" class="right-img">
+                                <h6 class="right-title"><a href="<?= base_url('artikel/' . $old['slug']) ?>"><?= $old['nama_artikel']; ?></a></h6>
+                            </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
@@ -118,18 +96,14 @@
         </div>
         <!-- Lower Content -->
         <div class="row mt-3 lower-container">
-            <div class="col-md-6 col-lg-6">
-                <div class="lower-content">
-                    <img src="<?= base_url('assets/img/2.png'); ?>" alt="Dummy" class="lower-img mt-2 mt-md-0">
-                    <h4 class="lower-title"><a href="#">Seorang ibu memiliki satu suami</a></h4>
+            <?php foreach ($artikel_bawah as $low) : ?>
+                <div class="col-md-6 col-lg-6">
+                    <div class="lower-content">
+                        <img src="<?= base_url('assets/content-img/' . $low['image']); ?>" alt="<?= $low['image'] ?>" class="lower-img mt-2 mt-md-0">
+                        <h4 class="lower-title"><a href="<?= base_url('artikel/' . $low['slug']) ?>"><?= $low['nama_artikel'] ?></a></h4>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-lg-6">
-                <div class="lower-content">
-                    <img src="<?= base_url('assets/img/3.png'); ?>" alt="Dummy" class="lower-img mt-3 mt-md-0">
-                    <h4 class="lower-title"><a href="#">Seorang ibu memiliki anak</a></h4>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
         <!-- End of Lower Content -->
     </div>

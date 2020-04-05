@@ -24,7 +24,7 @@ class Posting_temp extends CI_Controller
         $this->form_validation->set_rules('author', 'Author', 'required|trim');
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required|trim');
         $this->form_validation->set_rules('nama_artikel', 'Nama Artikel', 'required|trim');
-        $this->form_validation->set_rules('artikel_short', 'Isi Artikel Pendek', 'required|trim|max_length[50]');
+        $this->form_validation->set_rules('artikel_short', 'Isi Artikel Pendek', 'required|trim|max_length[100]');
         $this->form_validation->set_rules('artikel_text', 'Isi Artikel Pendek', 'required|trim');
 
         if ($this->form_validation->run() == false) {
@@ -46,7 +46,7 @@ class Posting_temp extends CI_Controller
             $this->load->view('temp/kategori');
         } else {
             $title = $this->input->post('kategori');
-            $slug  = url_title($title);
+            $slug  = strtolower(url_title($title));
 
             $data = [
                 'kategori' => $title,
