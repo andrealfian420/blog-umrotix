@@ -41,8 +41,7 @@ class Auth extends CI_Controller
             // password checking
             if (password_verify($password, $user['password'])) {
                 // all ok
-                $data = $user;
-                $this->session->set_userdata($data);
+                $this->session->set_userdata($user);
 
                 redirect('admin');
             } else {
@@ -55,5 +54,14 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('loginFailed', 'Oops!');
             redirect('auth');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('email');
+        $this->session->unset_userdata('password');
+
+        $this->session->set_flashdata('logout', 'Anda sudah keluar');
+        redirect('auth');
     }
 }

@@ -37,6 +37,26 @@
                     </div>
                 <?php endif; ?>
 
+                <!-- Logout Alert -->
+                <?php if ($this->session->flashdata('logout')) : ?>
+                    <div class="alert alert-success alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">
+                        <?= $this->session->flashdata('logout'); ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <!-- Not login alert -->
+                <?php if ($this->session->flashdata('loginFirst')) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">
+                        <?= $this->session->flashdata('loginFirst') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
                 <!-- Validation errors -->
                 <?php if (validation_errors()) : ?>
                     <div class="alert alert-danger alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">
