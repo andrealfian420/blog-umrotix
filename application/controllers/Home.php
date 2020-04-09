@@ -28,9 +28,14 @@ class Home extends CI_Controller
     public function detail($slug)
     {
         $data['artikel'] = $this->post_temp->getArticleBySlug($slug);
-        $data['artikel_related'] = $this->post_temp->getMiddleArticle();
-        $data['artikel_popular'] = $this->post_temp->getPopularArticle();
         $data['pageTitle'] = $data['artikel']['nama_artikel'];
+
+        $artikel_id = $data['artikel']['id'];
+
+        $data['artikel_terkait'] = $this->post_temp->getRelatedArticle($artikel_id);
+        $data['artikel_populer'] = $this->post_temp->getPopularArticle();
+
+        $this->post_temp->addViewersNumber($artikel_id);
 
         $this->load->view('templates/main/header', $data);
         $this->load->view('home/detail');
