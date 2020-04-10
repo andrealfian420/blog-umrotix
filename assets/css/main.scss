@@ -365,7 +365,105 @@ body {
 			}
 		}
 	}
+
+	.search-content {
+		display: inline-block;
+		position: relative;
+
+		.search-img {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 250px;
+			display: block;
+		}
+
+		.search-overlay {
+			width: 100%;
+			height: 250px;
+			position: absolute;
+			top: 0;
+			background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+		}
+
+		@media(max-width:768px) {
+			.search-img {
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				height: 150px;
+			}
+
+			.search-overlay {
+				width: 100%;
+				height: 150px;
+				position: absolute;
+				top: 0;
+				background-image: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
+			}
+		}
+
+		.search-title {
+			margin-top: -100px;
+			margin-left: 10px;
+			position: absolute;
+
+			.kategori {
+				a {
+					background: #008D8F;
+					color: #fff;
+					font-size: 10px;
+					padding: 5px 5px;
+					border-radius: 5px 5px;
+
+					&:hover {
+						text-decoration: none;
+						color: #dedcdc;
+					}
+				}
+			}
+
+			.title {
+				a {
+					font-size: 24px;
+					color: #ffffff;
+
+					&:hover {
+						text-decoration: none;
+						color: #dedcdc;
+					}
+				}
+			}
+		}
+
+		.search-subtitle {
+			margin-top: -40px;
+			margin-left: 12px;
+			font-size: 12px;
+			color: #fff;
+			position: absolute;
+
+			&:hover {
+				text-decoration: none;
+				color: #dedcdc;
+			}
+		}
+
+		@media(max-width:992px) {
+			.search-title {
+				margin-top: -80px;
+			}
+
+			.search-subtitle {
+				// margin-left: 5px;
+				// margin-top: -40px;
+				// position: absolute;
+				display: none;
+			}
+		}
+	}
 }
+
 
 // Footer
 
@@ -778,3 +876,7 @@ body {
 }
 
 // End of Update Password
+
+// Search Page
+
+// End of Search Page

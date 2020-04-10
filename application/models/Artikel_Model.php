@@ -21,6 +21,16 @@ class Artikel_Model extends CI_Model
         $this->db->insert('artikel', $data);
     }
 
+    public function getArticleByKeyword($keyword)
+    {
+        $this->db->select('*');
+        $this->db->from('artikel');
+        $this->db->like('nama_artikel', $keyword);
+        $this->db->or_like('artikel_short', $keyword);
+        $this->db->or_like('artikel_text', $keyword);
+        return $this->db->get()->result_array();
+    }
+
     public function getNewestArticle()
     {
         return $this->db->order_by('id', 'DESC')->limit(1)->get('artikel')->row_array();

@@ -51,8 +51,8 @@
         <div class="col-md-4 col-lg-4 mt-3">
             <div class="row d-none d-md-block">
                 <div class="col search-bar">
-                    <form action="" method="post">
-                        <input type="text" class="form-control search-input" placeholder="Cari Artikel" aria-describedby="button-addon2">
+                    <form action="<?= base_url('home/cari') ?>" method="post">
+                        <input type="text" class="form-control search-input" name="keyword" placeholder="Cari Artikel" aria-describedby="button-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-search" type="submit" id="button-addon2"><i class="fas fa-search"></i></button>
                         </div>

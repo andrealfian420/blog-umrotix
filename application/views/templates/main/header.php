@@ -34,14 +34,12 @@
                     </div>
 
                     <!-- Mobile button -->
-                    <form class="form-inline d-sm-block d-md-none" action="" method="post">
+                    <form class="form-inline d-sm-block d-md-none" action="<?= base_url('home/cari') ?>" method="post">
                         <div class="input-group mb-3">
-                            <form action="" method="post">
-                                <input type="text" class="form-control" name="keyword" placeholder="Cari artikel..">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" type="submit">Cari</button>
-                                </div>
-                            </form>
+                            <input type="text" class="form-control" name="keyword" placeholder="Cari artikel..">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">Cari</button>
+                            </div>
                         </div>
                     </form>
                 </div>
