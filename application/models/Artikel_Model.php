@@ -26,9 +26,11 @@ class Artikel_Model extends CI_Model
         return $this->db->order_by('id', 'DESC')->limit(1)->get('artikel')->row_array();
     }
 
-    public function getMiddleArticle()
+    public function getMiddleArticle($mainArticleId)
     {
-        return $this->db->order_by('id', 'DESC')->limit(3)->get('artikel')->result_array();
+        $query = "SELECT * FROM artikel WHERE id <> ? ORDER BY id DESC LIMIT 3";
+
+        return $this->db->query($query, $mainArticleId)->result_array();
     }
 
     public function getOldArticle()

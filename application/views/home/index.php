@@ -18,7 +18,6 @@
                             <div class="title">
                                 <a href="<?php echo base_url('artikel/' . $artikel_baru['slug']); ?>">
                                     <?= $artikel_baru['nama_artikel']; ?>
-                                    <!-- Jangan minum diwaktu siang Lorem Ipusm Doral siang Lorem Ipusm Doral -->
                                 </a>
                             </div>
                         </div>
@@ -40,7 +39,7 @@
                                 <?php $date = date('d F Y', strtotime($mid['created_at']));
                                 echo $date; ?>
                             </small>
-                            <div class="middle-news"><?php echo htmlentities($mid['artikel_short']) ?></div>
+                            <div class="middle-news"><?php echo $mid['artikel_short'] ?></div>
                         </div>
                     </div>
                 <?php endforeach; ?>

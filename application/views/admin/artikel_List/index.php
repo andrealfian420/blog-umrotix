@@ -52,7 +52,7 @@
                             <td><?= $artk['view_count'] ?></td>
                             <td>
                                 <a href="<?= base_url('artikel_list/editArtikel/' . $artk['id']) ?>" class="badge badge-success">Edit</a>
-                                <a href="<?= base_url('artikel_list/hapusArtikel/' . $artk['id']);  ?>" class="badge badge-danger btnDelete">Delete</a>
+                                <a href="<?= base_url('artikel_list/hapusArtikel/' . $artk['id']);  ?>" class="badge badge-danger btnDelete" onclick="return confirm('Yakin Hapus?')">Delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

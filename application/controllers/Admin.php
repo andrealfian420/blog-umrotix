@@ -11,11 +11,14 @@ class Admin extends CI_Controller
             $this->session->set_flashdata('loginFirst', 'Silahkan login terlebih dahulu!');
             redirect('auth');
         }
+
+        $this->load->model('User_Model', 'user');
     }
 
     public function index()
     {
         $data['pageTitle'] = 'Dashboard Admin';
+        $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar');

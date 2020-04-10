@@ -8,18 +8,19 @@ class Home extends CI_Controller
         parent::__construct();
         $this->load->model('Artikel_Model', 'artikel');
         $this->load->model('Kategori_Model', 'kategori');
+        $this->load->model('User_Model', 'user');
     }
 
     public function index()
     {
         $data['pageTitle'] = 'Blog Umrotix';
+        $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
+
         $data['artikel_baru']  = $this->artikel->getNewestArticle();
-        $data['artikel_tengah'] = $this->artikel->getMiddleArticle();
+        $data['artikel_tengah'] = $this->artikel->getMiddleArticle($data['artikel_baru']['id']);
         $data['artikel_lama'] = $this->artikel->getOldArticle();
         $data['artikel_bawah'] = $this->artikel->getLowerArticle();
 
-        // var_dump($data['artikel_lama']);
-        // die;
 
         $this->load->view('templates/main/header', $data);
         $this->load->view('home/index');

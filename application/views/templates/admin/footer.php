@@ -56,6 +56,42 @@
         let filename = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(filename);
     });
+
+    $('.btnTambah').on('click', function() {
+        // ubah nama modal dan tombol submit saat tombol tambah di click
+        $('.judulModal').html('Tambah Kategori');
+        $(".modal-footer button[type=submit]").html('Tambah Kategori');
+        $('.modal-body form').attr('action', '<?= base_url('kategori_list/tambahKategori') ?>');
+
+        // kosongkan modal nya
+        $('#id').val('');
+        $('#nama_kategori').val('');
+    });
+
+    // ubah data
+    $('.btnUpdateKategori').on('click', function() {
+
+        // ubah nama modal dan tombol submit saat tombol edit di click
+        $('.judulModal').html('Ubah Kategori');
+        $('.modal-footer button[type=submit]').html('Simpan Perubahan');
+        $('.modal-body form').attr('action', '<?= base_url('kategori_list/updateKategori') ?>');
+
+        const id = $(this).data('id');
+        // Ajax
+        $.ajax({
+            url: '<?= base_url('kategori_list/getDataKategori') ?>',
+            data: {
+                id: id
+            },
+            method: 'post',
+            dataType: 'json',
+            success: function(data) {
+                // isi modal sesuai data mahasiswa yg ingin di edit berdasarkan id nya
+                $('#nama_kategori').val(data.kategori);
+                $('#id').val(data.id);
+            }
+        });
+    })
 </script>
 </body>
 

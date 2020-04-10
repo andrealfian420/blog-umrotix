@@ -13,6 +13,10 @@ class Auth extends CI_Controller
 
     public function index()
     {
+        if ($this->session->userdata('email')) {
+            redirect('admin');
+        }
+
         $data['pageTitle'] = 'Login Admin';
 
         // Validation Rules
@@ -41,7 +45,12 @@ class Auth extends CI_Controller
             // password checking
             if (password_verify($password, $user['password'])) {
                 // all ok
-                $this->session->set_userdata($user);
+                $data = [
+                    'email' => $user['email'],
+                    'role_id' => $user['role_id']
+                ];
+
+                $this->session->set_userdata($data);
 
                 redirect('admin');
             } else {
@@ -59,7 +68,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('email');
-        $this->session->unset_userdata('password');
+        $this->session->unset_userdata('role_id');
 
         $this->session->set_flashdata('logout', 'Anda sudah keluar');
         redirect('auth');

@@ -15,6 +15,7 @@ class Artikel_list extends CI_Controller
         $this->load->model('Artikel_Model', 'artikel');
         $this->load->model('Kategori_Model', 'kategori');
         $this->load->model('User_Model', 'user');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -22,6 +23,7 @@ class Artikel_list extends CI_Controller
         $data['pageTitle'] = 'Daftar Artikel';
         $role_id = $this->session->userdata('role_id');
         $data['artikel'] = $this->artikel->getArticleByRole($role_id);
+        $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar');
@@ -32,11 +34,10 @@ class Artikel_list extends CI_Controller
 
     public function tambahArtikel()
     {
-        $this->load->library('form_validation');
-        $this->load->helper('text');
-
         $data['pageTitle'] = 'Artikel Baru';
         $data['kategori'] = $this->kategori->getKategori();
+        $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
+
 
         $this->form_validation->set_rules('author_id', 'Author', 'required|trim');
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required|trim');
@@ -69,12 +70,10 @@ class Artikel_list extends CI_Controller
 
     public function editArtikel($id)
     {
-        $this->load->library('form_validation');
-        $this->load->helper('text');
-
         $data['pageTitle'] = 'Update Artikel';
         $data['artikel'] = $this->artikel->getArticleById($id);
         $data['author'] = $this->user->getAllUser();
+        $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
 
         $data['kategori'] = $this->kategori->getKategori();
 

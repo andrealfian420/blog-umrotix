@@ -34,8 +34,9 @@
         </a>
         <div id="profil" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Profil Saya</a>
-                <a class="collapse-item" href="cards.html">Update Profil</a>
+                <a class="collapse-item" href="<?= base_url('user'); ?>">Profil Saya</a>
+                <a class="collapse-item" href="<?= base_url('user/update'); ?>">Update Profil</a>
+                <a class="collapse-item" href="<?= base_url('user/updatePassword'); ?>">Update Password</a>
             </div>
         </div>
     </li>
