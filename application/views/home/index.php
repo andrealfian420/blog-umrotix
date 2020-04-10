@@ -11,7 +11,7 @@
                         <div class="upper-title">
                             <div class="kategori d-none d-lg-inline mr-1">
                                 <a href="#">
-                                    <?php $kategori = $this->db->get_where('kategori_temp', ['id' => $artikel_baru['kategori_id']])->row_array();
+                                    <?php $kategori = $this->db->get_where('kategori', ['id' => $artikel_baru['kategori_id']])->row_array();
                                     echo $kategori['kategori']; ?>
                                 </a>
                             </div>
@@ -31,6 +31,7 @@
             </div>
             <div class="row mt-4">
                 <?php foreach ($artikel_tengah as $mid) : ?>
+
                     <div class="col-md-4 mt-2">
                         <div class="middle-content">
                             <img src="<?php echo base_url('assets/content-img/' . $mid['image']); ?>" alt="<?php echo $mid['image']; ?>" class="middle-img mt-0 mt-md-2">
@@ -39,7 +40,7 @@
                                 <?php $date = date('d F Y', strtotime($mid['created_at']));
                                 echo $date; ?>
                             </small>
-                            <p class="middle-news"><?php echo $mid['artikel_short'] ?></p>
+                            <div class="middle-news"><?php echo htmlentities($mid['artikel_short']) ?></div>
                         </div>
                     </div>
                 <?php endforeach; ?>

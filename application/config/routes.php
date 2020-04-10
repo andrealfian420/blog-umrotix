@@ -51,5 +51,5 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $route['artikel/(:any)'] = 'home/detail/$1';
 $route['default_controller'] = 'home';
-$route['404_override'] = '';
+$route['404_override'] = 'notfound';
 $route['translate_uri_dashes'] = FALSE;

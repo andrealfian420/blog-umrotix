@@ -6,16 +6,17 @@ class Home extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Post_temp_Model', 'post_temp');
+        $this->load->model('Artikel_Model', 'artikel');
+        $this->load->model('Kategori_Model', 'kategori');
     }
 
     public function index()
     {
         $data['pageTitle'] = 'Blog Umrotix';
-        $data['artikel_baru']  = $this->post_temp->getNewestArticle();
-        $data['artikel_tengah'] = $this->post_temp->getMiddleArticle();
-        $data['artikel_lama'] = $this->post_temp->getOldArticle();
-        $data['artikel_bawah'] = $this->post_temp->getLowerArticle();
+        $data['artikel_baru']  = $this->artikel->getNewestArticle();
+        $data['artikel_tengah'] = $this->artikel->getMiddleArticle();
+        $data['artikel_lama'] = $this->artikel->getOldArticle();
+        $data['artikel_bawah'] = $this->artikel->getLowerArticle();
 
         // var_dump($data['artikel_lama']);
         // die;
@@ -27,15 +28,21 @@ class Home extends CI_Controller
 
     public function detail($slug)
     {
-        $data['artikel'] = $this->post_temp->getArticleBySlug($slug);
+        $data['artikel'] = $this->artikel->getArticleBySlug($slug);
+
+        if (!$data['artikel']) {
+            redirect(base_url());
+        }
+
+
         $data['pageTitle'] = $data['artikel']['nama_artikel'];
 
         $artikel_id = $data['artikel']['id'];
 
-        $data['artikel_terkait'] = $this->post_temp->getRelatedArticle($artikel_id);
-        $data['artikel_populer'] = $this->post_temp->getPopularArticle();
+        $data['artikel_terkait'] = $this->artikel->getRelatedArticle($artikel_id);
+        $data['artikel_populer'] = $this->artikel->getPopularArticle();
 
-        $this->post_temp->addViewersNumber($artikel_id);
+        $this->artikel->addViewersNumber($artikel_id);
 
         $this->load->view('templates/main/header', $data);
         $this->load->view('home/detail');

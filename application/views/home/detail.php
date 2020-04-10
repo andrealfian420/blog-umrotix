@@ -21,7 +21,9 @@
                         echo $fixed_post;
                         ?>
                         <div class="content-info">
-                            <h6>Dipost oleh : <?= $artikel['author']; ?></h6>
+                            <h6>Dipost oleh : <?php $author = $this->db->get('users', ['id' => $artikel['author_id']])->row_array();
+                                                echo $author['nama'];
+                                                ?></h6>
                             <h6>Pada tanggal : <?php $date = date('d M Y', strtotime($artikel['created_at']));
                                                 echo $date; ?>
                             </h6>

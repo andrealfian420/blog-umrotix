@@ -6,7 +6,6 @@ class Admin extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
 
         if (!$this->session->userdata('email')) {
             $this->session->set_flashdata('loginFirst', 'Silahkan login terlebih dahulu!');
@@ -19,7 +18,14 @@ class Admin extends CI_Controller
         $data['pageTitle'] = 'Dashboard Admin';
 
         $this->load->view('templates/admin/header', $data);
+        $this->load->view('templates/admin/sidebar');
+        $this->load->view('templates/admin/topbar');
         $this->load->view('admin/index');
         $this->load->view('templates/admin/footer');
+    }
+
+    public function user_list()
+    {
+        echo 'ok';
     }
 }
