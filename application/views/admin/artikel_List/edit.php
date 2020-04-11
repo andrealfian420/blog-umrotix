@@ -45,7 +45,7 @@
                 </div>
 
                 <input type="hidden" name="id" value="<?= $artikel['id'] ?>">
-                <?php if ($this->session->userdata('role_id') == 1) : ?>
+                <?php if ($user['role_id'] == 1) : ?>
                     <div class="form-group">
                         <label for="author">Author</label>
                         <select class="form-control" name="author_id" id="author">
@@ -61,7 +61,7 @@
                         <small class="text-danger"><?= form_error('author_id'); ?></small>
                     </div>
                 <?php else : ?>
-                    <input type="hidden" name="author_id" value="<?= $this->session->userdata('id'); ?>">
+                    <input type="hidden" name="author_id" value="<?= $user['id']; ?>">
                 <?php endif; ?>
 
                 <div class="form-group">

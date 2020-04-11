@@ -18,7 +18,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="col-3 mb-2">
-            <button class="btn btn-primary"><a href="<?= base_url('artikel_list/tambahArtikel') ?>" class="text-white text-decoration-none">Tambah Artikel Baru</a></button>
+            <a class="btn btn-primary" href="<?= base_url('artikel_list/tambahArtikel') ?>" class="text-white text-decoration-none">Tambah Artikel Baru</a>
         </div>
         <div class="col-12">
             <table class="table">

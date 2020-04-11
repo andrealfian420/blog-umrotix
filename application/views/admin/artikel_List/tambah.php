@@ -39,7 +39,7 @@
                     <small class="text-danger"><?= form_error('kategori_id'); ?></small>
                 </div>
 
-                <input type="hidden" name="author_id" value="<?= $this->session->userdata('id'); ?>">
+                <input type="hidden" name="author_id" value="<?= $user['id']; ?>">
 
                 <div class="form-group">
                     <label for="nama_artikel">Nama Artikel</label>

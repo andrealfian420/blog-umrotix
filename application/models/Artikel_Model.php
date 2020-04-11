@@ -153,4 +153,35 @@ class Artikel_Model extends CI_Model
             die;
         }
     }
+
+    public function countTotalViews($author_id)
+    {
+        if ($this->session->userdata('role_id') == 1) {
+            // Master admin shows all views
+            $this->db->select_sum('view_count');
+            $result = $this->db->get('artikel')->row_array();
+            return $result['view_count'];
+        } else if ($this->session->userdata('role_id') == 2) {
+            // Admin shows his/her post's view
+            $this->db->select_sum('view_count');
+            $this->db->where('author_id', $author_id);
+            $result = $this->db->get('artikel')->row_array();
+            return $result['view_count'];
+        }
+    }
+
+    public function countTotalPosts($author_id)
+    {
+        if ($this->session->userdata('role_id') == 1) {
+            // Master admin shows all amount of posts 
+            $result = $this->db->get('artikel');
+
+            return $result->num_rows();
+        } else if ($this->session->userdata('role_id') == 2) {
+            // Admin shows his/her post's amount
+            $result = $this->db->get_where('artikel', ['author_id' => $author_id]);
+
+            return $result->num_rows();
+        }
+    }
 }

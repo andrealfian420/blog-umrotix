@@ -86,9 +86,37 @@
             method: 'post',
             dataType: 'json',
             success: function(data) {
-                // isi modal sesuai data mahasiswa yg ingin di edit berdasarkan id nya
                 $('#nama_kategori').val(data.kategori);
                 $('#id').val(data.id);
+            }
+        });
+    })
+
+    // ubah status keaktifan
+    $('.btnStatus').on('click', function() {
+
+        const id = $(this).data('id');
+        const status = $(this).data('status');
+
+        // Ajax
+        $.ajax({
+            url: '<?= base_url('manage_user/getStatus') ?>',
+            method: 'post',
+            dataType: 'json',
+            success: function(data) {
+
+                $('#id').val(id);
+                $.each(data, function(i) {
+                    if (data[i].id == status) {
+                        $('#status').append(`
+                            <option value="${data[i].id}" selected>${data[i].status}</option>
+                            `);
+                    } else {
+                        $('#status').append(`
+                        <option value="${data[i].id}">${data[i].status}</option>
+                            `);
+                    }
+                })
             }
         });
     })

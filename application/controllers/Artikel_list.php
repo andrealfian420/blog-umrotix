@@ -74,7 +74,7 @@ class Artikel_list extends CI_Controller
     {
         $data['pageTitle'] = 'Update Artikel';
         $data['artikel'] = $this->artikel->getArticleById($id);
-        $data['author'] = $this->user->getAllUser();
+        $data['author'] = $this->user->getAllUsers();
         $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
 
         $data['kategori'] = $this->kategori->getKategori();

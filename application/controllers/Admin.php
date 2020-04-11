@@ -17,8 +17,16 @@ class Admin extends CI_Controller
 
     public function index()
     {
+        $this->load->model('Artikel_Model', 'artikel');
+
         $data['pageTitle'] = 'Dashboard Admin';
         $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
+
+        $data['total_views'] = $this->artikel->countTotalViews($data['user']['id']);
+        $data['total_posts'] = $this->artikel->countTotalPosts($data['user']['id']);
+
+        // echo $data['total_views'];
+        // die;
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar');
