@@ -53,12 +53,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="artikel_short">Isi Pendek Artikel (Maks.100 karakter)</label>
-                    <textarea class="form-control" name="artikel_short" id="artikel_short" rows="2" maxlength="100" placeholder="Tulis potongan singkat isi artikel"><?= set_value('artikel_short'); ?></textarea>
-                    <small class="text-danger"><?= form_error('artikel_short'); ?></small>
-                </div>
-
-                <div class="form-group">
                     <label for="artikel_text">Isi Artikel</label>
                     <textarea class="form-control" name="artikel_text" id="artikel_text" rows="10"><?= set_value('artikel_text'); ?></textarea>
                 </div>

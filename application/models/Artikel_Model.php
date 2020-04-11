@@ -10,7 +10,6 @@ class Artikel_Model extends CI_Model
         $data = [
             'nama_artikel' => $this->input->post('nama_artikel'),
             'slug' => strtolower(url_title($this->input->post('nama_artikel'))),
-            'artikel_short' => $this->input->post('artikel_short'),
             'artikel_text' => $this->input->post('artikel_text'),
             'image' => $this->_uploadImage(),
             'created_at' => date('Y-m-d'),
@@ -26,7 +25,6 @@ class Artikel_Model extends CI_Model
         $this->db->select('*');
         $this->db->from('artikel');
         $this->db->like('nama_artikel', $keyword);
-        $this->db->or_like('artikel_short', $keyword);
         $this->db->or_like('artikel_text', $keyword);
         return $this->db->get()->result_array();
     }
@@ -105,7 +103,6 @@ class Artikel_Model extends CI_Model
     {
         $this->db->set('nama_artikel', $this->input->post('nama_artikel'));
         $this->db->set('kategori_id', $this->input->post('kategori_id'));
-        $this->db->set('artikel_short', $this->input->post('artikel_short'));
         $this->db->set('artikel_text', $this->input->post('artikel_text'));
         $this->db->set('author_id', $this->input->post('author_id'));
         $this->db->where('id', $this->input->post('id'));

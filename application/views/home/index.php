@@ -39,7 +39,11 @@
                                 <?php $date = date('d F Y', strtotime($mid['created_at']));
                                 echo $date; ?>
                             </small>
-                            <div class="middle-news"><?php echo $mid['artikel_short'] ?></div>
+                            <div class="middle-news">
+                                <?php $short = str_replace('&nbsp;', " ", $mid['artikel_text']);
+                                $fixed_short = substr(strip_tags($short), 0, 100) . '...';
+                                echo $fixed_short; ?>
+                            </div>
                         </div>
                     </div>
                 <?php endforeach; ?>

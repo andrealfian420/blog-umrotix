@@ -51,11 +51,9 @@
                         <select class="form-control" name="author_id" id="author">
                             <option value="">--Pilih Author--</option>
                             <?php foreach ($author as $aut) : ?>
-                                <?php if ($aut['id'] == $artikel['author_id']) : ?>
-                                    <option value="<?= $aut['id'] ?>" selected><?= $aut['nama'] ?></option>
-                                <?php else : ?>
-                                    <option value="<?= $aut['id'] ?>"><?= $ktgr['<nama></nama>'] ?></option>
-                                <?php endif; ?>
+                                <option value="<?= $aut['id'] ?>" <?php if ($aut['id'] == $artikel['author_id']) {
+                                                                        echo 'selected';
+                                                                    } ?>><?= $aut['nama'] ?></option>
                             <?php endforeach; ?>
                         </select>
                         <small class="text-danger"><?= form_error('author_id'); ?></small>
@@ -68,12 +66,6 @@
                     <label for="nama_artikel">Nama Artikel</label>
                     <input type="text" class="form-control" name="nama_artikel" id="nama_artikel" placeholder="Tulis judul terbaikmu!" value="<?= $artikel['nama_artikel'] ?>">
                     <small class="text-danger"><?= form_error('nama_artikel'); ?></small>
-                </div>
-
-                <div class="form-group">
-                    <label for="artikel_short">Isi Pendek Artikel (Maks.100 karakter)</label>
-                    <textarea class="form-control" name="artikel_short" id="artikel_short" rows="2" maxlength="100" placeholder="Tulis potongan singkat isi artikel"><?= $artikel['artikel_short']; ?></textarea>
-                    <small class="text-danger"><?= form_error('artikel_short'); ?></small>
                 </div>
 
                 <div class="form-group">

@@ -35,7 +35,6 @@ class Home extends CI_Controller
             redirect(base_url());
         }
 
-
         $data['pageTitle'] = $data['artikel']['nama_artikel'];
 
         $artikel_id = $data['artikel']['id'];

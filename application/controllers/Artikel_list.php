@@ -44,7 +44,6 @@ class Artikel_list extends CI_Controller
         $this->form_validation->set_rules('author_id', 'Author', 'required|trim');
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required|trim');
         $this->form_validation->set_rules('nama_artikel', 'Nama Artikel', 'required|trim');
-        $this->form_validation->set_rules('artikel_short', 'Isi Artikel Pendek', 'required|trim|max_length[100]');
         $this->form_validation->set_rules('artikel_text', 'Isi Artikel', 'required|trim');
 
         if ($this->form_validation->run() == false) {
@@ -82,7 +81,6 @@ class Artikel_list extends CI_Controller
         $this->form_validation->set_rules('author_id', 'Author', 'required|trim');
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required|trim');
         $this->form_validation->set_rules('nama_artikel', 'Nama Artikel', 'required|trim');
-        $this->form_validation->set_rules('artikel_short', 'Isi Artikel Pendek', 'required|trim|max_length[100]');
         $this->form_validation->set_rules('artikel_text', 'Isi Artikel', 'required|trim');
 
         if ($this->form_validation->run() == false) {
