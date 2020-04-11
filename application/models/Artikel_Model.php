@@ -65,12 +65,11 @@ class Artikel_Model extends CI_Model
         return $this->db->query($query, $id)->result_array();
     }
 
-    public function getArticleByRole($role_id)
+    public function getArticleByRole($role_id, $author_id)
     {
         if ($role_id == 1) {
             return $this->db->get('artikel')->result_array();
         } else if ($role_id == 2) {
-            $author_id = $this->session->userdata('id');
 
             return $this->db->get_where('artikel', ['author_id' => $author_id])->result_array();
         }

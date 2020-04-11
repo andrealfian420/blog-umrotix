@@ -21,9 +21,11 @@ class Artikel_list extends CI_Controller
     public function index()
     {
         $data['pageTitle'] = 'Daftar Artikel';
-        $role_id = $this->session->userdata('role_id');
-        $data['artikel'] = $this->artikel->getArticleByRole($role_id);
         $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
+
+        $role_id = $this->session->userdata('role_id');
+        $author_id = $data['user']['id'];
+        $data['artikel'] = $this->artikel->getArticleByRole($role_id, $author_id);
 
         $this->load->view('templates/admin/header', $data);
         $this->load->view('templates/admin/sidebar');
