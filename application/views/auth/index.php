@@ -57,6 +57,16 @@
                     </div>
                 <?php endif; ?>
 
+                <!-- Not active alert -->
+                <?php if ($this->session->flashdata('notActive')) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">
+                        <?= $this->session->flashdata('notActive') ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
                 <!-- Validation errors -->
                 <?php if (validation_errors()) : ?>
                     <div class="alert alert-danger alert-dismissible fade show d-inline-block mt-2 mb-0" role="alert">

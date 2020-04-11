@@ -44,15 +44,22 @@ class Auth extends CI_Controller
         if ($user) {
             // password checking
             if (password_verify($password, $user['password'])) {
-                // all ok
-                $data = [
-                    'email' => $user['email'],
-                    'role_id' => $user['role_id']
-                ];
+                // is user activated
+                if ($user['is_active'] == 1) {
+                    // all ok
+                    $data = [
+                        'email' => $user['email'],
+                        'role_id' => $user['role_id']
+                    ];
 
-                $this->session->set_userdata($data);
+                    $this->session->set_userdata($data);
 
-                redirect('admin');
+                    redirect('admin');
+                } else {
+                    // user is not activated
+                    $this->session->Set_flashdata('notActive', 'Akun anda belum diaktifkan, silahkan hubungi masteradmin!');
+                    redirect('auth');
+                }
             } else {
                 // wrong password
                 $this->session->Set_flashdata('wrongPassword', 'Oops!');
