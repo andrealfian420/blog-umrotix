@@ -73,6 +73,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?= base_url('artikel_list'); ?>">Daftar Artikel</a>
                 <a class="collapse-item" href="<?= base_url('kategori_list'); ?>">Daftar Kategori</a>
+                <a class="collapse-item" href="<?= base_url('tag_list'); ?>">Daftar Tag</a>
             </div>
         </div>
     </li>

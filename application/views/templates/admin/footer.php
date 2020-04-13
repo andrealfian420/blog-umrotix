@@ -92,6 +92,42 @@
         });
     })
 
+    // Tambah Tag
+    $('.btnTambahTag').on('click', function() {
+        // ubah nama modal dan tombol submit saat tombol tambah di click
+        $('.judulModal').html('Tambah Tag');
+        $(".modal-footer button[type=submit]").html('Tambah Tag');
+        $('.modal-body form').attr('action', '<?= base_url('tag_list/tambahTag') ?>');
+
+        // kosongkan modal nya
+        $('#id').val('');
+        $('#tag').val('');
+    });
+
+    // ubah Tag
+    $('.btnUpdateTag').on('click', function() {
+
+        // ubah nama modal dan tombol submit saat tombol edit di click
+        $('.judulModal').html('Ubah Tag');
+        $('.modal-footer button[type=submit]').html('Simpan Perubahan');
+        $('.modal-body form').attr('action', '<?= base_url('tag_list/updateTag') ?>');
+
+        const id = $(this).data('id');
+        // Ajax
+        $.ajax({
+            url: '<?= base_url('tag_list/getDataTag') ?>',
+            data: {
+                id: id
+            },
+            method: 'post',
+            dataType: 'json',
+            success: function(data) {
+                $('#nama_tag').val(data.tag);
+                $('#id').val(data.id);
+            }
+        });
+    })
+
     // ubah status keaktifan
     $('.btnStatus').on('click', function() {
 
