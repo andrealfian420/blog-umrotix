@@ -2,11 +2,62 @@
 <html lang="en">
 
 <head>
+    <title><?= $pageTitle; ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="<?= base_url(); ?>favicon.png" type="text/css">
-    <title><?= $pageTitle; ?></title>
 
+
+    <?php if (isset($artikel)) : ?>
+        <meta name="description" content="<?php $short = str_replace('&nbsp;', " ", $artikel['artikel_text']);
+                                            $fixed_short = substr(strip_tags($short), 0, 100) . '...';
+                                            echo $fixed_short; ?>">
+        <link rel="canonical" href="<?= base_url('artikel/' . $artikel['slug']); ?>">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="<?= $artikel['nama_artikel']; ?>">
+        <meta property="og:description" content="<?php $short = str_replace('&nbsp;', " ", $artikel['artikel_text']);
+                                                    $fixed_short = substr(strip_tags($short), 0, 100) . '...';
+                                                    echo $fixed_short; ?>">
+        <meta property="og:url" content="<?= base_url('artikel/' . $artikel['slug']); ?>">
+        <meta property="og:site_name" content="Umrotix Blog">
+        <meta property="article:publisher" content="https://facebook.com/umrotix/">
+        <meta property="article:tag" content="Umroh">
+        <meta property="article:section" content="<?php $kategori = $this->db->get_where('kategori', ['id' => $artikel['kategori_id']])->row_array();
+                                                    echo $kategori['kategori']; ?>">
+        <meta property="og:image" content="<?= base_url('assets/content-img/' . $artikel['image']) ?>">
+        <meta property="og:image:secure_url" content="<?= base_url('assets/content-img/' . $artikel['image']) ?>">
+        <meta property="og:image:width" content="662">
+        <meta property="og:image:height" content="441">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:description" content="<?php $short = str_replace('&nbsp;', " ", $artikel['artikel_text']);
+                                                    $fixed_short = substr(strip_tags($short), 0, 100) . '...';
+                                                    echo $fixed_short; ?>">
+        <meta name="twitter:title" content="<?= $artikel['nama_artikel']; ?>">
+        <meta name="twitter:site" content="@umrotix">
+        <meta name="twitter:image" content="<?= base_url('assets/content-img/' . $artikel['image']) ?>">
+        <meta name="twitter:creator" content="@umrotix">
+    <?php else : ?>
+        <meta name="description" content="Beragam info terkini tentang umroh di umrotix, serta tips dan info-info menarik tentang kehidupan sehari-hari">
+        <link rel="canonical" href="<?= base_url(); ?>">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="<?= $pageTitle; ?>">
+        <meta property="og:description" content="Beragam info terkini tentang umroh di umrotix, serta tips dan info-info menarik tentang kehidupan sehari-hari">
+        <meta property="og:url" content="<?= base_url(); ?>">
+        <meta property="og:site_name" content="Umrotix Blog">
+        <meta property="og:image" content="<?= base_url('assets/img/logo-umrotix@2x.png') ?>">
+        <meta property="og:image:secure_url" content="<?= base_url('assets/img/logo-umrotix@2x.png') ?>">
+        <meta property="og:image:width" content="786">
+        <meta property="og:image:height" content="242">
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:description" content="Beragam info terkini tentang umroh di umrotix, serta tips dan info-info menarik tentang kehidupan sehari-hari">
+        <meta name="twitter:title" content="<?= $pageTitle; ?>">
+        <meta name="twitter:site" content="@umrotix">
+        <meta name="twitter:image" content="<?= base_url('assets/img/logo-umrotix@2x.png') ?>">
+        <meta name="twitter:creator" content="@umrotix">
+    <?php endif; ?>
+
+    <link rel="shortcut icon" href="<?= base_url(); ?>favicon.png" type="text/css">
     <link rel="stylesheet" href="<?= base_url('vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <link href="<?= base_url('vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
