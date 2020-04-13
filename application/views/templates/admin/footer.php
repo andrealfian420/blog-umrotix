@@ -48,6 +48,7 @@
 <!-- Custom scripts for all pages-->
 <script src="<?= base_url('vendor/sbadmin2/js/sb-admin-2.min.js') ?>"></script>
 <script src="<?= base_url('vendor/ckeditor/ckeditor.js'); ?>"></script>
+<script src="<?= base_url('vendor/select2-4.0.13/dist/js/select2.min.js') ?>"></script>
 
 <script>
     CKEDITOR.replace('artikel_text');
@@ -55,6 +56,10 @@
     $('.custom-file-input').on('change', function() {
         let filename = $(this).val().split('\\').pop();
         $(this).next('.custom-file-label').addClass("selected").html(filename);
+    });
+
+    $('#tag').select2({
+        placeholder: 'Pilih tag untuk artikel ini'
     });
 
     $('.btnTambah').on('click', function() {

@@ -21,7 +21,9 @@
         <meta property="og:url" content="<?= base_url('artikel/' . $artikel['slug']); ?>">
         <meta property="og:site_name" content="Umrotix Blog">
         <meta property="article:publisher" content="https://facebook.com/umrotix/">
-        <meta property="article:tag" content="Umroh">
+        <?php foreach (json_decode($artikel['tag']) as $tag) : ?>
+            <meta property="article:tag" content="<?= $tag; ?>">
+        <?php endforeach; ?>
         <meta property="article:section" content="<?php $kategori = $this->db->get_where('kategori', ['id' => $artikel['kategori_id']])->row_array();
                                                     echo $kategori['kategori']; ?>">
         <meta property="og:image" content="<?= base_url('assets/content-img/' . $artikel['image']) ?>">

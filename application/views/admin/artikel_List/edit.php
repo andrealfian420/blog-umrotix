@@ -79,6 +79,24 @@
                     <small class="text-danger"><?= form_error('image'); ?></small>
                 </div>
 
+                <div class="form-group">
+                    <label for="tag">Tag Artikel</label>
+                    <select name="tag[]" multiple id="tag" class="form-control">
+                        <?php if (isset($tags)) : ?>
+                            <?php foreach ($tags as $tag) : ?>
+                                <?php if (in_array($tag['tag'], json_decode($artikel['tag']))) : ?>
+                                    <option value="<?= $tag['tag']; ?>" selected><?= $tag['tag']; ?></option>
+                                <?php else : ?>
+                                    <option value="<?= $tag['tag']; ?>"><?= $tag['tag']; ?></option>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <option disabled>Silahkan tambah tag pada halaman daftar tag terlebih dahulu</option>
+                        <?php endif; ?>
+                    </select>
+                    <small class="text-danger"><?= form_error('tag[]'); ?></small>
+                </div>
+
                 <button class="btn btn-primary mt-3" style="width:200px" type="submit">Publish!</button>
                 <a href="<?= base_url('artikel_list/'); ?>" class="btn btn-secondary mt-3 text-white text-decoration-none" style="width:200px">Batal</a>
             </form>

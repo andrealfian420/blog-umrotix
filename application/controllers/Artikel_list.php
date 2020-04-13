@@ -14,6 +14,7 @@ class Artikel_list extends CI_Controller
 
         $this->load->model('Artikel_Model', 'artikel');
         $this->load->model('Kategori_Model', 'kategori');
+        $this->load->model('Tag_Model', 'tag');
         $this->load->model('User_Model', 'user');
         $this->load->library('form_validation');
     }
@@ -38,13 +39,18 @@ class Artikel_list extends CI_Controller
     {
         $data['pageTitle'] = 'Artikel Baru';
         $data['kategori'] = $this->kategori->getKategori();
+        $data['tags'] = $this->tag->getTag();
         $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
+
+        // var_dump($this->input->post());
+        // die;
 
 
         $this->form_validation->set_rules('author_id', 'Author', 'required|trim');
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required|trim');
         $this->form_validation->set_rules('nama_artikel', 'Nama Artikel', 'required|trim');
         $this->form_validation->set_rules('artikel_text', 'Isi Artikel', 'required|trim');
+        $this->form_validation->set_rules('tag[]', 'Tag Artikel', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin/header', $data);
@@ -73,6 +79,7 @@ class Artikel_list extends CI_Controller
     {
         $data['pageTitle'] = 'Update Artikel';
         $data['artikel'] = $this->artikel->getArticleById($id);
+        $data['tags'] = $this->tag->getTag();
         $data['author'] = $this->user->getAllUsers();
         $data['user'] = $this->user->getUserByEmail($this->session->userdata('email'));
 
@@ -82,6 +89,7 @@ class Artikel_list extends CI_Controller
         $this->form_validation->set_rules('kategori_id', 'Kategori', 'required|trim');
         $this->form_validation->set_rules('nama_artikel', 'Nama Artikel', 'required|trim');
         $this->form_validation->set_rules('artikel_text', 'Isi Artikel', 'required|trim');
+        $this->form_validation->set_rules('tag[]', 'Tag Artikel', 'required|trim');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/admin/header', $data);

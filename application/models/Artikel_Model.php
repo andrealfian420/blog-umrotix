@@ -15,6 +15,7 @@ class Artikel_Model extends CI_Model
             'created_at' => date('Y-m-d'),
             'author_id' => $this->input->post('author_id'),
             'kategori_id' => $this->input->post('kategori_id'),
+            'tag' => json_encode($this->input->post('tag[]'))
         ];
 
         $this->db->insert('artikel', $data);
@@ -105,6 +106,7 @@ class Artikel_Model extends CI_Model
         $this->db->set('kategori_id', $this->input->post('kategori_id'));
         $this->db->set('artikel_text', $this->input->post('artikel_text'));
         $this->db->set('author_id', $this->input->post('author_id'));
+        $this->db->set('tag', json_encode($this->input->post('tag[]')));
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('artikel');
     }

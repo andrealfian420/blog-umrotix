@@ -31,6 +31,12 @@ class Home extends CI_Controller
     {
         $data['artikel'] = $this->artikel->getArticleBySlug($slug);
 
+        // foreach (json_decode($data['artikel']['tag']) as $tag) {
+        //     echo $tag;
+        //     echo '<br>';
+        // }
+        // die;
+
         if (!$data['artikel']) {
             redirect(base_url());
         }

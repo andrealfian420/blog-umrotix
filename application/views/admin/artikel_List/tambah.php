@@ -48,13 +48,27 @@
                 </div>
 
                 <div class="custom-file mb-3">
-                    <input type="file" class="custom-file-input" name="image" id="customFile" value="<?= set_value('image'); ?>" required>
+                    <input type="file" class="custom-file-input" name="image" id="customFile" value="<?= set_value('image'); ?>" accept=".png, .jpg, .jpeg" required>
                     <label class="custom-file-label" for="customFile">Upload gambar untuk header artikel (Ukuran Maks. 2MB)</label>
                 </div>
 
                 <div class="form-group">
                     <label for="artikel_text">Isi Artikel</label>
                     <textarea class="form-control" name="artikel_text" id="artikel_text" rows="10"><?= set_value('artikel_text'); ?></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tag">Tag Artikel</label>
+                    <select name="tag[]" multiple id="tag" class="form-control">
+                        <?php if (isset($tags)) : ?>
+                            <?php foreach ($tags as $tag) : ?>
+                                <option value="<?= $tag['tag']; ?>"><?= $tag['tag']; ?></option>
+                            <?php endforeach; ?>
+                        <?php else : ?>
+                            <option disabled>Silahkan tambah tag pada halaman daftar tag terlebih dahulu</option>
+                        <?php endif; ?>
+                    </select>
+                    <small class="text-danger"><?= form_error('tag[]'); ?></small>
                 </div>
 
                 <button class="btn btn-primary mt-3" style="width:200px" type="submit">Publish!</button>
