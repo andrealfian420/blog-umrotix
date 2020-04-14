@@ -63,7 +63,7 @@
     <link rel="stylesheet" href="<?= base_url('vendor/bootstrap/css/bootstrap.min.css'); ?>">
     <link href="<?= base_url('vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Nunito&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
 <body>

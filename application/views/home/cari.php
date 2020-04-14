@@ -6,7 +6,7 @@
             <div class="row mb-3 ml-2 ml-md-0">
                 <h3>Hasil Pencarian keyword "<?= $this->input->post('keyword'); ?>" :</h3>
             </div>
-            <?php if (!$artikel) : ?>
+            <?php if (!$articles) : ?>
                 <div class="row">
                     <div class="col-8 mt-3">
                         <div class="text-danger">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
             <?php endif; ?>
-            <?php foreach ($artikel as $atkl) : ?>
+            <?php foreach ($articles as $atkl) : ?>
                 <div class="row">
                     <div class="col-11">
                         <div class="search-content">

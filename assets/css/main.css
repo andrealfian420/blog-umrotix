@@ -179,7 +179,7 @@ body {
 }
 
 .content-blog .middle-content .middle-news {
-  text-align: justify;
+  text-align: left;
   word-wrap: break-word;
 }
 
@@ -681,10 +681,8 @@ body {
 }
 
 .related-article .related-article-title {
-  font-weight: bold;
-  margin-top: -35px;
+  margin-top: -55px;
   margin-left: 8px;
-  z-index: 2;
   position: absolute;
 }
 
@@ -695,6 +693,13 @@ body {
 .related-article .related-article-title a:hover {
   text-decoration: none;
   color: #dedcdc;
+}
+
+.related-article .related-article-date {
+  margin-top: -35px;
+  margin-left: 8px;
+  color: #ffffff;
+  position: absolute;
 }
 
 .forgot-container .upper-chara .upper-img {

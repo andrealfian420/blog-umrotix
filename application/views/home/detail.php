@@ -92,9 +92,13 @@
                         <div class="related-article">
                             <img src="<?= base_url('assets/content-img/' . $rtd['image']); ?>" alt="<?= $rtd['image']; ?>" class="related-article-img mt-2">
                             <div class="related-overlay"></div>
-                            <h5 class="related-article-title">
+                            <h6 class="related-article-title">
                                 <a href="<?= base_url('artikel/' . $rtd['slug']); ?>"><?= $rtd['nama_artikel']; ?></a>
-                            </h5>
+                            </h6>
+                            <div class="related-article-date">
+                                <p> <?php $date = date('d M Y', strtotime($rtd['created_at']));
+                                    echo $date; ?></p>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

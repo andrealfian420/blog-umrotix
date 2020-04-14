@@ -62,12 +62,12 @@ class Home extends CI_Controller
         }
 
         $data['pageTitle'] = 'Hasil Pencarian';
-        $data['artikel'] = $this->artikel->getArticleByKeyword($this->input->post('keyword'));
+        $data['articles'] = $this->artikel->getArticleByKeyword($this->input->post('keyword'));
 
         $data['artikel_lama'] = $this->artikel->getOldArticle();
 
 
-        $this->load->view('templates/main/header', $data);
+        $this->load->view('templates/main/header-cari', $data);
         $this->load->view('home/cari');
         $this->load->view('templates/main/footer');
     }
