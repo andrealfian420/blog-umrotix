@@ -7,13 +7,15 @@ class Artikel_Model extends CI_Model
     {
         $this->load->helper('text');
 
+        $image = $this->_uploadImage();
+
         $data = [
             'nama_artikel' => $this->input->post('nama_artikel'),
             'artikel_url' => 'https://blog.umrotix.com/artikel/' . strtolower(url_title($this->input->post('nama_artikel'))),
             'slug' => strtolower(url_title($this->input->post('nama_artikel'))),
             'artikel_text' => $this->input->post('artikel_text'),
-            'image' => $this->_uploadImage(),
-            'image_url' => 'https://blog.umrotix.com/assets/content-img/' . $this->_uploadImage(),
+            'image' => $image,
+            'image_url' => 'https://blog.umrotix.com/assets/content-img/' . $image,
             'created_at' => date('Y-m-d'),
             'author_id' => $this->input->post('author_id'),
             'kategori_id' => $this->input->post('kategori_id'),
