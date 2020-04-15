@@ -9,9 +9,11 @@ class Artikel_Model extends CI_Model
 
         $data = [
             'nama_artikel' => $this->input->post('nama_artikel'),
+            'artikel_url' => 'https://blog.umrotix.com/artikel/' . strtolower(url_title($this->input->post('nama_artikel'))),
             'slug' => strtolower(url_title($this->input->post('nama_artikel'))),
             'artikel_text' => $this->input->post('artikel_text'),
             'image' => $this->_uploadImage(),
+            'image_url' => 'https://blog.umrotix.com/assets/content-img/' . $this->_uploadImage(),
             'created_at' => date('Y-m-d'),
             'author_id' => $this->input->post('author_id'),
             'kategori_id' => $this->input->post('kategori_id'),
@@ -114,6 +116,7 @@ class Artikel_Model extends CI_Model
     public function updateImageArtikel($newImage)
     {
         $this->db->set('image', $newImage);
+        $this->db->set('image_url', 'https://blog.umrotix.com/assets/content-img/' . $newImage);
         $this->db->where('id', $this->input->post('id'));
         $this->db->update('artikel');
     }
@@ -193,6 +196,8 @@ class Artikel_Model extends CI_Model
 
     public function getPublishedArtikel()
     {
-        return $this->db->order_by('created_at', 'DESC')->limit(10)->get_where('artikel', ['published' => 1])->result_array();
+        $query = "SELECT artikel.nama_artikel, artikel.artikel_url, artikel.artikel_text, artikel.image_url, artikel.created_at, artikel.view_count, users.nama as nama_author, kategori.kategori, artikel.tag FROM artikel INNER JOIN users ON artikel.author_id=users.id INNER JOIN kategori ON artikel.kategori_id=kategori.id WHERE artikel.published = 1 ORDER BY artikel.created_at DESC LIMIT 10";
+
+        return $this->db->query($query)->result_array();
     }
 }
