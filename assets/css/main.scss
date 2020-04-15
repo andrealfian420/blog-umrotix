@@ -39,7 +39,7 @@ body {
 // Mobile - Navbar
 @media(min-width: 992px) {
 	.navbar {
-		.nav-link {
+		.menu {
 			&:hover::after {
 				content: '';
 				display: block;

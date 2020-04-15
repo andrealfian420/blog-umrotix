@@ -147,4 +147,11 @@ class Artikel_list extends CI_Controller
             return redirect('artikel_list/editArtikel/' . $id);
         }
     }
+
+    public function updateStatusPublish()
+    {
+        $status = $this->input->post('published');
+
+        $this->artikel->updateStatusArtikel($status);
+    }
 }

@@ -32,7 +32,7 @@ body {
 }
 
 @media (min-width: 992px) {
-  .navbar .nav-link:hover::after {
+  .navbar .menu:hover::after {
     content: '';
     display: block;
     border-bottom: 3px solid #040404;

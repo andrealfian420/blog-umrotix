@@ -183,4 +183,16 @@ class Artikel_Model extends CI_Model
             return $result->num_rows();
         }
     }
+
+    public function updateStatusArtikel($status)
+    {
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->set('published', $status);
+        $this->db->update('artikel');
+    }
+
+    public function getPublishedArtikel()
+    {
+        return $this->db->order_by('created_at', 'DESC')->limit(10)->get_where('artikel', ['published' => 1])->result_array();
+    }
 }

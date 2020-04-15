@@ -21,13 +21,14 @@
             <a class="btn btn-primary" href="<?= base_url('artikel_list/tambahArtikel') ?>" class="text-white text-decoration-none">Tambah Artikel Baru</a>
         </div>
         <div class="col-12">
-            <table class="table">
+            <table class="table tabel-artikel">
                 <thead class="thead-dark">
                     <tr>
                         <th>#</th>
                         <th>Nama Artikel</th>
                         <th>Nama Author</th>
                         <th>Tanggal Post</th>
+                        <th>Published</th>
                         <th>Jumlah Views</th>
                         <th>Action</th>
                     </tr>
@@ -49,6 +50,7 @@
                                 echo $author['nama'];
                                 ?></td>
                             <td><?= $artk['created_at']; ?></td>
+                            <td class="text-center"><input type="checkbox" class="form-check-input published-check" value="<?= $artk['published']; ?>" <?php echo ($artk['published'] == 1) ? 'checked' : '';  ?> data-id="<?= $artk['id']; ?>"></td>
                             <td><?= $artk['view_count'] ?></td>
                             <td>
                                 <a href="<?= base_url('artikel_list/editArtikel/' . $artk['id']) ?>" class="badge badge-success">Edit</a>

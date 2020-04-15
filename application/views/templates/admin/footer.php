@@ -62,6 +62,35 @@
         placeholder: 'Pilih tag untuk artikel ini'
     });
 
+    $('.published-check').on('change', function() {
+        const limit = 10;
+        if ($('.tabel-artikel input:checked').length > limit) {
+            this.checked = false;
+            alert('Batas maksimum artikel yang dapat dipublish telah tercapai!');
+        }
+
+        let val = $(this).val();
+
+        if ($(this).is(':checked')) {
+            val = 1
+        } else {
+            val = 0
+        }
+
+        const id = $(this).data('id');
+        $(this).val(val);
+
+        $.ajax({
+            url: '<?= base_url('artikel_list/updateStatusPublish') ?>',
+            method: 'post',
+            data: {
+                id: id,
+                published: val
+            },
+            dataType: 'json'
+        })
+    });
+
     $('.btnTambah').on('click', function() {
         // ubah nama modal dan tombol submit saat tombol tambah di click
         $('.judulModal').html('Tambah Kategori');

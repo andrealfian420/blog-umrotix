@@ -37,20 +37,43 @@
     <!-- Navbar Umrotix -->
     <div class="header">
         <div class="container">
-            <a class="navbar-brand d-none d-md-block text-center" href="<?= base_url(); ?>"><img src="<?= base_url('assets/img/logo-umrotix@2x.png'); ?>" alt="Logo Umrotix"></a>
+            <a class="navbar-brand d-none d-md-block text-center" href="https://umrotix.com/"><img src="<?= base_url('assets/img/logo-umrotix@2x.png'); ?>" alt="Logo Umrotix"></a>
             <nav class="navbar navbar-expand-md navbar-light bg-white">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a href="<?= base_url(); ?>" class="d-xs-block d-sm-block d-md-none mx-auto"><img class="logoMini" src="<?= base_url('assets/img/logo-umrotix@2x.png'); ?>" alt="Logo Umrotix"></a>
+                <a href="https://umrotix.com/" class="d-xs-block d-sm-block d-md-none mx-auto"><img class="logoMini" src="<?= base_url('assets/img/logo-umrotix@2x.png'); ?>" alt="Logo Umrotix"></a>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav mx-auto mr-5">
-                        <a class="nav-item nav-link mx-md-2" href="<?= base_url(); ?>">Beranda</a>
-                        <a class="nav-item nav-link mx-md-2" href="#">Kisah Agen</a>
-                        <a class="nav-item nav-link mx-md-2" href="#">Testimoni</a>
-                        <a class="nav-item nav-link mx-md-2" href="#">Perusahaan</a>
-                        <a class="nav-item nav-link mx-md-2" href="#">Tentang</a>
-                    </div>
+                    <ul class="navbar-nav mx-auto mr-5">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link mx-md-2 menu" href="<?= base_url(); ?>">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link mx-md-2 menu" href="#">Berita</a>
+                        </li>
+                        <li class="nav-item dropdown menu-dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Liputan
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="#">Agen</a>
+                                <a class="dropdown-item" href="#">Travel</a>
+                                <a class="dropdown-item" href="#">Jamaah</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link mx-md-2 menu" href="#">Galeri</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link mx-md-2 menu" href="#">Wisata Religi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link mx-md-2 menu" href="#">Bisnis Syariah</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link mx-md-2 menu" href="#">Hikmah</a>
+                        </li>
+                    </ul>
 
                     <!-- Mobile button -->
                     <form class="form-inline d-sm-block d-md-none" action="<?= base_url('home/cari') ?>" method="post">
