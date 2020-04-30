@@ -40,7 +40,17 @@
                     <div class="col-md-4 mt-2">
                         <div class="middle-content">
                             <img src="<?php echo base_url('assets/content-img/' . $mid['image']); ?>" alt="<?php echo $mid['image']; ?>" class="middle-img mt-0 mt-md-2">
-                            <h5 class="middle-title mt-2 mt-md-0 text-center"><a href="<?php echo base_url('artikel/' . $mid['slug']) ?>"><?php echo $mid['nama_artikel']; ?></a></h5>
+                            <h5 class="middle-title mt-2 mt-md-0 text-center">
+                                <a href="<?php echo base_url('artikel/' . $mid['slug']) ?>">
+                                    <?php if (strlen($mid['nama_artikel']) > 25) {
+                                        $fixed = substr($mid['nama_artikel'], 0, 25) . '...';
+                                        echo $fixed;
+                                    } else {
+                                        echo $mid['nama_artikel'];
+                                    }
+                                    ?>
+                                </a>
+                            </h5>
                             <small class="text-muted middle-subtitle">
                                 <?php $date = date('d F Y', strtotime($mid['created_at']));
                                 echo $date; ?>
