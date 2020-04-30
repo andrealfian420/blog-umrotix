@@ -17,11 +17,17 @@
                             </div>
                             <div class="title">
                                 <a href="<?php echo base_url('artikel/' . $artikel_baru['slug']); ?>">
-                                    <?= $artikel_baru['nama_artikel']; ?>
+                                    <?php if (strlen($artikel_baru['nama_artikel']) > 40) {
+                                        $fixed = substr($artikel_baru['nama_artikel'], 0, 40) . '...';
+                                        echo $fixed;
+                                    } else {
+                                        echo $artikel_baru['nama_artikel'];
+                                    }
+                                    ?>
                                 </a>
                             </div>
                         </div>
-                        <div class="upper-subtitle">
+                        <div class="upper-subtitle d-none d-xl-block">
                             <?php $date = date('d M Y', strtotime($artikel_baru['created_at']));
                             echo $date; ?>
                         </div>
@@ -71,8 +77,19 @@
                                     <img src="<?= base_url('assets/content-img/' . $old['image']); ?>" alt="<?= $old['image']; ?>" class="right-img">
                                 </div>
                                 <div class="col-5">
-                                    <p class="right-title"><a href="<?= base_url('artikel/' . $old['slug']) ?>"><?= $old['nama_artikel']; ?></a></p>
-                                    <p class="right-post-date">
+                                    <p class="right-title">
+                                        <a href="<?= base_url('artikel/' . $old['slug']) ?>">
+                                            <?php
+                                            if (strlen($old['nama_artikel']) > 25) {
+                                                $fixed = substr($old['nama_artikel'], 0, 25) . '...';
+                                                echo $fixed;
+                                            } else {
+                                                echo $old['nama_artikel'];
+                                            }
+                                            ?>
+                                        </a>
+                                    </p>
+                                    <p class="right-post-date d-none d-xl-block mt-auto mt-xl-0">
                                         <?php $date = date('d M Y', strtotime($old['created_at']));
                                         echo $date; ?>
                                     </p>
@@ -92,8 +109,18 @@
                 <div class="lower-content">
                     <img src="<?= base_url('assets/content-img/' . $low['image']); ?>" alt="<?= $low['image']; ?>" class="lower-img mt-2 mt-md-0">
                     <div class="lower-overlay"></div>
-                    <h4 class="lower-title"><a href="<?= base_url('artikel/' . $low['slug']) ?>"><?= $low['nama_artikel']; ?></a></h4>
-                    <h6 class="lower-subtitle">
+                    <h4 class="lower-title">
+                        <a href="<?= base_url('artikel/' . $low['slug']) ?>">
+                            <?php if (strlen($low['nama_artikel']) > 30) {
+                                $fixed = substr($low['nama_artikel'], 0, 30) . '...';
+                                echo $fixed;
+                            } else {
+                                echo $low['nama_artikel'];
+                            }
+                            ?>
+                        </a>
+                    </h4>
+                    <h6 class="lower-subtitle d-none d-xl-block">
                         <?php $date = date('d M Y', strtotime($low['created_at']));
                         echo $date; ?>
                     </h6>

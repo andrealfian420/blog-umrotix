@@ -30,9 +30,21 @@
     <link href="<?= base_url('vendor/fontawesome-free/css/all.min.css');  ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="<?= base_url('assets/css/main.css'); ?>">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+
+    <style>
+        .page-cari {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        .content-blog {
+            flex: 1;
+        }
+    </style>
 </head>
 
-<body>
+<body class="page-cari">
 
     <!-- Navbar Umrotix -->
     <div class="header">

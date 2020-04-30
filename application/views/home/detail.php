@@ -74,7 +74,15 @@
                                 } ?>
                                 <li>
                                     <h6 class="content-link text-left mt-3 ml-1 ml-md-0">
-                                        <a href="<?= base_url('artikel/' . $pop['slug']) ?>"><?= $pop['nama_artikel'] ?></a>
+                                        <a href="<?= base_url('artikel/' . $pop['slug']) ?>">
+                                            <?php if (strlen($pop['nama_artikel']) > 30) {
+                                                $fixed = substr($pop['nama_artikel'], 0, 30) . '...';
+                                                echo $fixed;
+                                            } else {
+                                                echo $pop['nama_artikel'];
+                                            }
+                                            ?>
+                                        </a>
                                     </h6>
                                 </li>
                             <?php endforeach; ?>
@@ -93,7 +101,15 @@
                             <img src="<?= base_url('assets/content-img/' . $rtd['image']); ?>" alt="<?= $rtd['image']; ?>" class="related-article-img mt-2">
                             <div class="related-overlay"></div>
                             <h6 class="related-article-title">
-                                <a href="<?= base_url('artikel/' . $rtd['slug']); ?>"><?= $rtd['nama_artikel']; ?></a>
+                                <a href="<?= base_url('artikel/' . $rtd['slug']); ?>">
+                                    <?php if (strlen($rtd['nama_artikel']) > 30) {
+                                        $fixed = substr($rtd['nama_artikel'], 0, 30) . '...';
+                                        echo $fixed;
+                                    } else {
+                                        echo $rtd['nama_artikel'];
+                                    }
+                                    ?>
+                                </a>
                             </h6>
                             <div class="related-article-date">
                                 <p> <?php $date = date('d M Y', strtotime($rtd['created_at']));

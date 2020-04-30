@@ -30,7 +30,13 @@
                                 </div>
                                 <div class="title">
                                     <a href="<?php echo base_url('artikel/' . $atkl['slug']); ?>">
-                                        <?= $atkl['nama_artikel']; ?>
+                                        <?php if (strlen($atkl['nama_artikel']) > 40) {
+                                            $fixed = substr($atkl['nama_artikel'], 0, 40) . '...';
+                                            echo $fixed;
+                                        } else {
+                                            echo $atkl['nama_artikel'];
+                                        }
+                                        ?>
                                     </a>
                                 </div>
                             </div>
@@ -66,8 +72,18 @@
                                     <img src="<?= base_url('assets/content-img/' . $old['image']); ?>" alt="<?= $old['image']; ?>" class="right-img">
                                 </div>
                                 <div class="col-5">
-                                    <p class="right-title"><a href="<?= base_url('artikel/' . $old['slug']) ?>"><?= $old['nama_artikel']; ?></a></p>
-                                    <p class="right-post-date">
+                                    <p class="right-title">
+                                        <a href="<?= base_url('artikel/' . $old['slug']) ?>">
+                                            <?php if (strlen($old['nama_artikel']) > 25) {
+                                                $fixed = substr($old['nama_artikel'], 0, 25) . '...';
+                                                echo $fixed;
+                                            } else {
+                                                echo $old['nama_artikel'];
+                                            }
+                                            ?>
+                                        </a>
+                                    </p>
+                                    <p class="right-post-date d-none d-xl-block">
                                         <?php $date = date('d M Y', strtotime($old['created_at']));
                                         echo $date; ?>
                                     </p>
